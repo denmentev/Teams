@@ -129,20 +129,3 @@ All messages, role colors/prefixes, and confirmation prompts are fully customiza
 | Transfer ownership | No | No | Yes |
 
 ---
-
-## Installation
-
-1. Place the `Teams.jar` in your server's `plugins/` folder.
-2. Start the server once to generate `config.yml`.
-3. Configure your database credentials in `plugins/Teams/config.yml`.
-4. Restart the server.
-
----
-
-## Building from Source
-
-```bash
-mvn clean package
-```
-
-The compiled jar will be in `target/`.
