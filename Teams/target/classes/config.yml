@@ -1,0 +1,188 @@
+# Teams Plugin Configuration
+
+# Database settings
+database:
+  type: "MySQL" # MySQL or SQLite
+  mysql:
+    host: "5.129.230.134"
+    port: 3306
+    database: "default_db"
+    username: "gen_user"
+    password: "ELWU!K3fW^0CflqmdNBbGO0z"
+    useSSL: true
+
+# Team ID (MID) settings
+team-id:
+  # Range for team IDs (min-max)
+  min: 1
+  max: 999
+  # Format with leading zeros (true = 001, false = 1)
+  use-leading-zeros: true
+
+# Minimum playtime in hours required to create a team
+minimum-playtime-hours: 5
+
+# Maximum number of managers per team
+max-managers: 1
+
+# Date format for team creation date
+date-format: "dd MMM yyyy"
+
+# Message formats - Vanilla Minecraft style
+messages:
+  # Minimal prefixes
+  prefix: ""
+  error-prefix: "&c"
+  success-prefix: "&a"
+  info-prefix: "&e"
+
+  # Team chat format - simple vanilla style
+  team-chat-format: "&7[Team] &f%player_name%: %message%"
+
+  # Role formats - minimal styling with stars
+  roles:
+    owner:
+      prefix: "&e★ &f"
+      color: "&6"
+      display: "&7(Owner)"
+    manager:
+      prefix: "&e☆ &f"
+      color: "&e"
+      display: "&7(Manager)"
+    member:
+      prefix: ""
+      color: "&f"
+      display: ""
+
+  # Command messages
+  commands:
+    # General
+    not-in-team: "You are not in a team"
+    already-in-team: "You are already in a team"
+    no-permission: "You don't have permission to do that"
+    usage: "Usage: %usage%"
+
+    # Team creation
+    team-created: "Team %team_name% created successfully"
+    playtime-required: "You need to play for at least %required% to create a team"
+    current-playtime: "Your current playtime: %playtime%"
+
+    # Team deletion
+    team-deleted: "Team deleted successfully"
+
+    # Invitations
+    invite-sent: "Invite sent to %player_name%"
+    invite-received: "You received an invite to join team %team_name%"
+    invite-from: "From: %inviter_name%"
+    invite-expired: "This invitation expires in 20 seconds"
+    invite-accepted: "You joined team %team_name%"
+    invite-declined: "Invitation declined"
+    invite-declined-notify: "%player_name% declined your invitation"
+    no-invites: "You have no active invitations"
+
+    # Member management
+    player-joined: "%player_name% joined the team"
+    player-left: "%player_name% left the team"
+    player-kicked: "%player_name% was kicked from the team"
+    member-promoted: "%player_name% promoted to %role%"
+    member-demoted: "%player_name% demoted to %role%"
+    role-changed-notify: "You have been %action% to %role%"
+
+  # Validation messages
+  validation:
+    name-length: "Team name must be between %min% and %max% characters"
+    name-taken: "A team with this name already exists"
+    name-inappropriate: "This team name contains inappropriate content"
+    name-invalid-characters: "Team name can only contain letters, numbers, spaces, underscores and hyphens"
+    player-not-found: "Player not found"
+    team-not-found: "Team not found"
+    cannot-invite-self: "You cannot invite yourself"
+    player-already-in-team: "This player is already in a team"
+    player-not-in-team: "This player is not in your team"
+    cannot-kick-self: "You cannot kick yourself. Use /team leave"
+    cannot-kick-owner: "You cannot kick the owner"
+    cannot-kick-manager: "Managers cannot kick other managers"
+    cannot-demote-member: "This player is already a member"
+    cannot-demote-self: "You cannot demote yourself"
+    cannot-promote-owner: "The owner already has the highest role"
+    already-manager: "This player is already a manager"
+    max-managers-reached: "There can only be %max% manager(s) in a team"
+    invite-cooldown: "Please wait %seconds% seconds before inviting this player again"
+    team-no-longer-exists: "This team no longer exists"
+    owner-cannot-leave: "Owners cannot leave their team. Transfer ownership first or delete the team"
+    only-owner-promote: "Only the owner can promote players"
+    only-owner-demote: "Only the owner can demote players"
+    only-owner-delete: "Only the owner can delete the team"
+    confirmation-expired: "This confirmation has expired or is invalid"
+    confirmation-already-processed: "This action has already been %action%"
+    confirmed: "confirmed"
+    cancelled: "cancelled"
+    action-cancelled: "Action cancelled"
+    empty-message: "Message cannot be empty"
+    database-error: "Teams currently not working"
+    console-only: "This command can only be used by players"
+    no-teams-exist: "No teams have been created"
+
+  # Team info format
+  team-info:
+    header: "--- Team Information ---"
+    name: "Name: %team_name%"
+    description: "Description: %description%"
+    description-not-set: "Not set"
+    created: "Created: %date%"
+    members-count: "Members: %count% member%s%"
+    roster: "Roster:"
+    member-online: "  %player_name% %role_display%"
+    member-offline: "  %player_name% %role_display% &7(Offline)"
+
+  # Confirmation messages
+  confirmations:
+    # Questions
+    kick-question: "Are you sure you want to kick %target% from the team?"
+    demote-question: "Are you sure you want to demote %target%?"
+    promote-question: "Are you sure you want to promote %target% to Manager?"
+    promote-owner-question: "Warning! Promoting %target% will make them the new Owner and you will become a Manager. Continue?"
+    delete-question: "Are you sure you want to delete the team?"
+    leave-manager-question: "Are you sure you want to leave the team? As a Manager, this is an important decision."
+    leave-owner-alone-question: "Warning! You are the only member. Leaving will delete the team. Continue?"
+
+    # Buttons
+    confirm-button: "&a[CONFIRM]"
+    cancel-button: "&c[CANCEL]"
+    confirm-hover: "Click to confirm"
+    cancel-hover: "Click to cancel"
+    expires-in: "This confirmation expires in %seconds% seconds"
+
+  # Notifications
+  notifications:
+    ownership-transferred: "You are now the Owner of the team"
+    manager-left: "The team Manager has left the team"
+
+  # Help messages
+  help:
+    header: "&7&m---------- Teams Commands &7&m----------"
+    create: "&e/team create <name> &7- Create a new team"
+    invite: "&e/team invite <player> &7- Invite a player"
+    accept: "&e/team accept&7/&edeny &7- Accept/decline invitation"
+    kick: "&e/team kick <player> &7- Kick a player"
+    promote: "&e/team promote&7/&edemote <player> &7- Promote/demote player"
+    delete: "&e/team delete &7- Delete team"
+    list: "&e/team list &7- List all teams"
+    info: "&e/team info &7[name] &7- Team information"
+    leave: "&e/team leave &7- Leave team"
+    chat: "&e#&7<message> &7- Send team chat message"
+
+# Banned words that cannot be used in team names
+banned-words:
+  - fuck
+  - shit
+  - ass
+  - bitch
+  - dick
+  - cunt
+  - nigger
+  - faggot
+  - retard
+  - whore
+  - pussy
+  - cock
