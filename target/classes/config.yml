@@ -4,11 +4,11 @@
 database:
   type: "MySQL" # MySQL or SQLite
   mysql:
-    host: "5.129.230.134"
+    host: "localhost"
     port: 3306
-    database: "default_db"
-    username: "gen_user"
-    password: "ELWU!K3fW^0CflqmdNBbGO0z"
+    database: "db_name"
+    username: "username"
+    password: ""
     useSSL: true
 
 # Team ID (MID) settings
@@ -172,7 +172,7 @@ messages:
     leave: "&e/team leave &7- Leave team"
     chat: "&e#&7<message> &7- Send team chat message"
 
-# Banned words that cannot be used in team names
+# The most BASIC check for the censored words list.
 banned-words:
   - fuck
   - shit
